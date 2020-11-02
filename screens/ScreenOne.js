@@ -15,7 +15,6 @@ const TabIcon = (props) => (
   
 export default class ScreenOne extends React.Component {
 
-  // we won't need to configure navigationOptions just yet
   static navigationOptions = {
     tabBarIcon: TabIcon
   };
