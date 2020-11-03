@@ -20,17 +20,17 @@ import {
   MESSAGE_SENDER_ID,
   APP_ID,
   MEASUREMENT_ID
-} from 'react-native-dotenv'
-const firebaseConfig = {
-   apiKey: API_KEY,
-   authDomain: AUTH_DOMAIN,
-   databaseURL: DATABASE_URL,
-   projectId: PROJECT_ID,
-   storageBucket: STORAGE_BUCKET,
-   messagingSenderId: MESSAGE_SENDER_ID,
-   appId: APP_ID,
-   measurementId:MEASUREMENT_ID
-}
+} from '@env'
+// const firebaseConfig = {
+//    apiKey: API_KEY,
+//    authDomain: AUTH_DOMAIN,
+//    databaseURL: DATABASE_URL,
+//    projectId: PROJECT_ID,
+//    storageBucket: STORAGE_BUCKET,
+//    messagingSenderId: MESSAGE_SENDER_ID,
+//    appId: APP_ID,
+//    measurementId:MEASUREMENT_ID
+// }
 firebase.initializeApp(firebaseConfig);
 
 
@@ -63,8 +63,8 @@ export default createAppContainer(
 
 import AppNavigator from './navigation/AppNavigator'
 
-export default function App() {
-  return (
-    <AppNavigator/> 
-  )
-}
+// export default function App() {
+//   return (
+//     <AppNavigator/> 
+//   )
+// }

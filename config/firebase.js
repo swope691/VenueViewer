@@ -5,7 +5,7 @@ import {
     PROJECT_ID,
     MESSAGE_SENDER_ID,
     APP_ID
-} from 'react-native-dotenv'
+} from '@env'
 
 const firebaseConfig = {
     apiKey: API_KEY,

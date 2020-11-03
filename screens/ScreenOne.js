@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScreenOne;
+// export default ScreenOne;
