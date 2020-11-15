@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, style } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import ScreenName from '../components/ScreenName.js'
@@ -20,7 +20,7 @@ export default class ScreenTwo extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={style.container}>
         <ScreenName name={'Screen Two'} />
       </View>
     );

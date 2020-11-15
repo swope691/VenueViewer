@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, style } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import firebase from 'firebase';
 
 // pull in the ScreenName component from ScreenName.js
 import ScreenName from '../components/ScreenName.js'
