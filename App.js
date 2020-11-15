@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
 export default class App extends React.Component{
   render(){
     return(
-      <AppNavigator/>
+      <View>
+        <Text>APP screen</Text>
+      </View>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Button } from 'react-native';
+import { style, Text, View, SafeAreaView, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
 

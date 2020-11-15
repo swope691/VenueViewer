@@ -2,6 +2,7 @@ import * as firebase from 'firebase';
 
 
 const firebaseConfig = {
+CHANGE='new stuff',
 API_KEY='AIzaSyDTV_6alkdTBvtYACELKt13WPbQpf8NjZw',
 AUTH_DOMAIN='venueviewer-93298.firebaseapp.com',
 DATABASE_URL='https://venueviewer-93298.firebaseio.com',
