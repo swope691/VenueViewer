@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet , Text, View} from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+<<<<<<< Updated upstream
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -9,6 +10,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 //import AuthNavigator from './navigation/AuthNavigator';
+=======
+>>>>>>> Stashed changes
 import ScreenOne from './screens/ScreenOne.js';
 
 import firebase from 'firebase';
