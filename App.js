@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet , Text, View} from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -7,6 +7,10 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import ScreenOne from './screens/ScreenOne.js';
 import LoginScreen from './screens/LoginScreen';
 import LoadingScreen from './screens/LoadingScreen';
+import firebase from 'firebase';
+import { firebaseConfig } from './config/firebase';
+
+firebase.initializeApp(firebaseConfig);
 
 
 
@@ -26,9 +30,7 @@ const styles = StyleSheet.create({
 export default class App extends React.Component{
   render(){
     return(
-      <View>
-        <Text>APP screen</Text>
-      </View>
+      <AppNavigator/>
     )
   }
 }
