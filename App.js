@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet , Text, View} from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -10,7 +10,18 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Ionicons from 'react-native-vector-icons/Ionicons';
 //import AuthNavigator from './navigation/AuthNavigator';
 import ScreenOne from './screens/ScreenOne.js';
+
 import firebase from 'firebase';
+
+import LoginScreen from './screens/LoginScreen';
+import LoadingScreen from './screens/LoadingScreen';
+import firebase from 'firebase';
+import { firebaseConfig } from './config/firebase';
+
+firebase.initializeApp(firebaseConfig);
+
+
+
 
 // const firebaseConfig = {
 //    apiKey: API_KEY,

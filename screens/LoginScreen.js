@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    style
 } from "react-native";
 
 class LoadingScreen extends Component {

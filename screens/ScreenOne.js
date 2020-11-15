@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, style } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+
 // pull in the ScreenName component from ScreenName.js
 import ScreenName from '../components/ScreenName.js'
 
@@ -34,8 +35,8 @@ export default class ScreenOne extends React.Component {
     return (
 
       <View style={style.container}>
-                <Text>ScreenOne</Text>
-            </View>
+        <Text>ScreenOne</Text>
+      </View>
       // <SafeAreaView style={{ flex: 1 }}>
       //   <View style={styles.container}>
       //     <Text>{this.state.user.email}</Text>
