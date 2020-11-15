@@ -15,36 +15,40 @@ const TabIcon = (props) => (
   )
   
 export default class ScreenOne extends React.Component {
-  state = { user: {} };
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user != null) {
-        this.setState({user: user});
-      }
-    })
+  // state = { user: {} };
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     if (user != null) {
+  //       this.setState({user: user});
+  //     }
+  //   })
  
-  }
+  // }
 
 
 
-  static navigationOptions = {
-    tabBarIcon: TabIcon
-  };
+  // static navigationOptions = {
+  //   tabBarIcon: TabIcon
+  // };
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <Text>{this.state.user.email}</Text>
-          <Button title="Log Off" onPress={() => {
-            firebase.auth().signOut();
-          /*  analytics.identify("test", {
-                email: "this.state.email"
-              });*/
-          }}/>
-          <ScreenName name={'Screen One'/* pass the name prop to ScreenName */} />
-        </View>
-      </SafeAreaView>
+
+      <View style={style.container}>
+                <Text>ScreenOne</Text>
+            </View>
+      // <SafeAreaView style={{ flex: 1 }}>
+      //   <View style={styles.container}>
+      //     <Text>{this.state.user.email}</Text>
+      //     </View><Button title="Log Off" onPress={() => {
+      //       firebase.auth().signOut();
+      //     /*  analytics.identify("test", {
+      //           email: "this.state.email"
+      //         });*/
+      //     // }}/>
+      //     // <ScreenName name={'Screen One' pass the name prop to ScreenName } />
+      //   </View>
+      // </SafeAreaView>
     );
   }
 }
