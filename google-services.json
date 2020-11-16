@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1056626580920",
+    "firebase_url": "https://venueviewer-93298.firebaseio.com",
+    "project_id": "venueviewer-93298",
+    "storage_bucket": "venueviewer-93298.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056626580920:android:e981c57684766477a7834d",
+        "android_client_info": {
+          "package_name": "Venue.Viewer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056626580920-te3icr9lmo355ehe98qpm71n4uiegcc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4BaMbCAqojeqSZoTxK6-8xucp11-YkTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056626580920-te3icr9lmo355ehe98qpm71n4uiegcc6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1056626580920-95cqaguanbeh53acbfs0i7kr0iokqv75.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "VenueViewer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

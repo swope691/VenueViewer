@@ -4,10 +4,8 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import ScreenOne from './screens/ScreenOne.js';
 import LoginScreen from './screens/LoginScreen';
 import LoadingScreen from './screens/LoadingScreen';
-import firebase from 'firebase';
-import { firebaseConfig } from './config/firebase';
+import Firebase from './config/firebase';
 
-firebase.initializeApp(firebaseConfig);
 
 
 
@@ -40,4 +38,4 @@ const AppSwitchNavigator = createSwitchNavigator({
 });
 
 const AppNavigator = createAppContainer 
-(AppSwitchNavigator)
+(AppSwitchNavigator);

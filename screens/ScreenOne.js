@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, style } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import firebase from 'firebase';
 
 
 // pull in the ScreenName component from ScreenName.js
@@ -15,40 +16,37 @@ const TabIcon = (props) => (
   )
   
 export default class ScreenOne extends React.Component {
-  // state = { user: {} };
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     if (user != null) {
-  //       this.setState({user: user});
-  //     }
-  //   })
+  state = { user: {} };
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user != null) {
+        this.setState({user: user});
+      }
+    })
  
-  // }
+  }
 
 
 
-  // static navigationOptions = {
-  //   tabBarIcon: TabIcon
-  // };
+  static navigationOptions = {
+    tabBarIcon: TabIcon
+  };
 
   render() {
     return (
 
-      <View style={style.container}>
-        <Text>ScreenOne</Text>
+      <View style={styles.container}>
+        <Text>{this.state.user.email}</Text>
+        <Button title="Sign Out" onPress={() => firebase.auth().signOut()} />
+           <ScreenName name={'Screen One' /*pass the name prop to ScreenName*/ } />
       </View>
-      // <SafeAreaView style={{ flex: 1 }}>
-      //   <View style={styles.container}>
-      //     <Text>{this.state.user.email}</Text>
-      //     </View><Button title="Log Off" onPress={() => {
-      //       firebase.auth().signOut();
-      //     /*  analytics.identify("test", {
-      //           email: "this.state.email"
-      //         });*/
-      //     // }}/>
-      //     // <ScreenName name={'Screen One' pass the name prop to ScreenName } />
-      //   </View>
-      // </SafeAreaView>
+        // <View style={styles.container}>
+        //   <Text>{this.state.user.email}</Text>
+        //   </View><Button title="Log Off" onPress={() => {
+        //     firebase.auth().signOut()
+        //   }}/>
+         
+        // </View>
     );
   }
 }

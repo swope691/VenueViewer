@@ -17,10 +17,21 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "VenueViewer",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.1056626580920-95cqaguanbeh53acbfs0i7kr0iokqv75"
+        }
+      }
     },
+    "android": {
+      "package": "Venue.Viewer",
+      "googleServicesFile": "./google-services.json"
+      },
     "web": {
       "favicon": "./assets/favicon.png"
+      }
     }
   }
-}
+

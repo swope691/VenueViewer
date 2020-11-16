@@ -3,7 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-    style
+    style, ActivityIndicator
 } from "react-native";
 import firebase from 'firebase';
 
@@ -27,11 +27,11 @@ class LoadingScreen extends Component {
     }
     render(){
         return(
-            <View style={style.container}>
-                <Text>LoadingScreen</Text>
+            <View style={styles.container}>
+                <ActivityIndicator size="large"/>
             </View>
         )
-    }
+    } 
 }
 
 export default LoadingScreen;

@@ -20,7 +20,7 @@ export default class ScreenTwo extends React.Component {
 
   render() {
     return (
-      <View style={style.container}>
+      <View style={styles.container}>
         <ScreenName name={'Screen Two'} />
       </View>
     );
