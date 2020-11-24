@@ -6,7 +6,7 @@ import {
     View,
     Text,
     StyleSheet,
-    style, Button
+    style, Button, Image
 } from "react-native";
 
 class LoginScreen extends Component {
@@ -103,25 +103,33 @@ class LoginScreen extends Component {
         }
     }
     
-    
     render(){
         return(
             <View style={styles.container}>
-                <Button
-                    title="Sign In With Google"
-                    onPress={() => this.signInWithGoogleAsync()}
-                />
+                <Image style={styles.image} source={require("../assets/logo2.jpg")}/>
+                    <Button
+                        title="Sign In With Google"
+                        onPress={() => this.signInWithGoogleAsync()}
+                    />
             </View>
+
         )
     }
 }
 
-export default LoginScreen;
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
         alignItems: 'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        backgroundColor: "black",
+    },
+    image:{
+        backgroundColor: "black",
+        justifyContent: "center",
+        marginBottom: 30,
     }
 });
+
+export default LoginScreen;
