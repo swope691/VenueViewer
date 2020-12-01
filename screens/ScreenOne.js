@@ -44,11 +44,10 @@ export default class ScreenOne extends React.Component {
       {/* View below the sign out and logo */}
       <View style={styles.newproject}>
         <ImageBackground source={require("../assets/mic.jpg")} style={styles.bgimage}>
-          <Text style={styles.text}>Add New Project</Text>
+          <Button color="#fa7d00" style={styles.text} title="Add New Project"/>
         </ImageBackground>
       </View>
     </View>
-
 
       // Screen below sign out and Logo
         // <View style={styles.container}>
