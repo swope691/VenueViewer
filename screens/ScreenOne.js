@@ -1,12 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Button, Image, Text, ImageBackground} from 'react-native';
+import { StyleSheet, View, Button, Image, Text, ImageBackground, TextInput
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
+import database from '../database';
+import {addProject, getNotes} from '../database';
 
 
 // pull in the ScreenName component from ScreenName.js
 import ScreenName from '../components/ScreenName.js'
 import { color } from 'react-native-reanimated';
+
+
 
 const TabIcon = (props) => (
     <Ionicons
@@ -15,17 +20,38 @@ const TabIcon = (props) => (
       color={props.focused ? 'grey' : 'darkgrey'}
     />
   )
+
   
 export default class ScreenOne extends React.Component {
-  state = { user: {} };
+  state = { 
+    user: {},
+    notesList: [],
+    currentNote: null
+  };
+
+  onNotesRecieved = (notesList) => {
+    
+    
+    this.setState(prevState => ({
+      notesList: prevState.notesList = notesList
+    }));
+    console.log(notesList);
+    
+  }
+
+ 
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         this.setState({user: user});
       }
-    })
+    });
+
+    getNotes(this.onNotesRecieved);
  
   }
+
+
 
 
 
@@ -33,30 +59,47 @@ export default class ScreenOne extends React.Component {
     tabBarIcon: TabIcon
   };
 
+
   render() {
     return (
-    <View style={styles.wrapper}>
-      <View style={styles.topscreen}>
-        {/* <Text style={{color: "#fff", fontSize: 10}}>{this.state.user.email}</Text> */}
-        <Image style={styles.image} source={require("../assets/headlinelogo.jpg")}/>
-        <Button color="#fa7d00" title="Sign Out" onPress={() => firebase.auth().signOut()} />
-      </View>
-      {/* View below the sign out and logo */}
-      <View style={styles.newproject}>
-        <ImageBackground source={require("../assets/mic.jpg")} style={styles.bgimage}>
-          <Button color="#fa7d00" style={styles.text} title="Add New Project"/>
-        </ImageBackground>
-      </View>
-    </View>
+        <View style={styles.wrapper}>
+          <View style={styles.topscreen}>
+            {/* <Text style={{color: "#fff", fontSize: 10}}>{this.state.user.email}</Text> */}
+            <Image style={styles.image} source={require("../assets/headlinelogo.jpg")}/>
+            <Button color="#fa7d00" title="Sign Out" onPress={() => firebase.auth().signOut()} />
+          </View>
+          {/* View below the sign out and logo */}
+          <View style={styles.newproject}>
+            <ImageBackground source={require("../assets/mic.jpg")} style={styles.bgimage}>
+              <Text style={styles.text}>Add New Project</Text>
+            </ImageBackground>
+          </View>
 
-      // Screen below sign out and Logo
-        // <View style={styles.container}>
-        //   <Text>{this.state.user.email}</Text>
-        //   </View><Button title="Log Off" onPress={() => {
-        //     firebase.auth().signOut()
-        //   }}/>
-         
-        // </View>
+          <View style={styles.newproject}>
+            <Text>Title: </Text>
+            <TextInput style={styles.input} placeholder="Venue Name" 
+              value={this.state.currentNote}
+              onChangeText={(text) => this.setState(prevState => ({
+                currentNote: prevState.currentNote = text
+              }))}
+            />
+            <Button title="Create" 
+              onPress={() =>
+              addProject(
+                {
+                  venueName: this.state.currentNote
+                }
+              )
+            }/>
+            <Button title="Edit" onPress={() => this.props.navigation.navigate('ScreenTwo')}/>
+          <Text></Text>
+
+          </View>
+
+        </View>
+
+
+
     );
   }
 }
@@ -72,6 +115,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: "black",
     height: 50
+  },
+  input: {
+    flex: .3,
+    flexDirection: 'column',
+    borderWidth: 1,
+    borderColor: '#777',
+    margin: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
+
   },
   image:{
     height: 70,

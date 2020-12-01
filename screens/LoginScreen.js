@@ -65,7 +65,6 @@ class LoginScreen extends Component {
                             last_logged_in:Date.now()
                         })
                     }
-                    
                 })
                 .catch(function(error) {
               // Handle Errors here.
