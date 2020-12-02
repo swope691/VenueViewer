@@ -27,7 +27,33 @@ export function addProject(note, addComplete){
     note.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     
     dbh.collection('notes').add({
-        venueName: note.venueName
+        venueName: note.venueName,
+        address: "",
+        management: {
+            manager1: {
+                name: "",
+                email: "",
+            },
+            manager2: {
+                name: "",
+                email: "",
+            },
+            manager3: {
+                name: "",
+                email: "",
+            },
+            manager4: {
+                name: "",
+                email: "",
+            },
+            manager5: {
+                name: "",
+                email: "",
+            } 
+        },
+        venueInfo: ""
+        
+
     }).then((snapshot) => {
         note.id = snapshot.id;
         snapshot.set(note);

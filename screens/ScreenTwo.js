@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, style } from 'react-native';
+import { View, StyleSheet, style, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import ScreenName from '../components/ScreenName.js'
@@ -19,9 +19,12 @@ export default class ScreenTwo extends React.Component {
   // };
 
   render() {
+    const note = this.props.navigation.getParam('note')
+    console.log(note);
     return (
       <View style={styles.container}>
         <ScreenName name={'Screen Two'} />
+        <Text>{note.venueName}</Text>
       </View>
     );
   }

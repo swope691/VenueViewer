@@ -5,11 +5,11 @@ import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
 import database from '../database';
 import {addProject, getNotes} from '../database';
+import { ListItem, Divider } from 'react-native-elements';
 
 
 // pull in the ScreenName component from ScreenName.js
-import ScreenName from '../components/ScreenName.js'
-import { color } from 'react-native-reanimated';
+import { FlatList } from 'react-native-gesture-handler';
 
 
 
@@ -26,7 +26,7 @@ export default class ScreenOne extends React.Component {
   state = { 
     user: {},
     notesList: [],
-    currentNote: null
+    currentIndex: 0
   };
 
   onNotesRecieved = (notesList) => {
@@ -95,6 +95,29 @@ export default class ScreenOne extends React.Component {
           <Text></Text>
 
           </View>
+
+          <FlatList
+          data={this.state.notesList}
+          ItemSeparatorComponent={() => <Divider style={{ backgroundColor: 'black' }} />}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item, index }) => {
+            return (
+              <ListItem
+                containerStyle={styles.listItem}
+                title={item.venueName}
+                
+              
+                onPress={() => {
+                  this.setState(prevState => ({ currentIndex: prevState.currentIndex = index }))
+                  this.props.navigation.navigate('ScreenTwo', { note: item })
+                }
+                }
+
+              />
+            );
+          }
+          }
+        />
 
         </View>
 
