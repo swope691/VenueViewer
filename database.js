@@ -10,7 +10,7 @@ export const dbh = firebase.firestore();
 export async function getNotes(notesRetreived){
     var notesList = [];
     var snapshot = await dbh.collection('notes')
-    .orderBy('createdAt')
+    .orderBy('createdAt', 'desc')
     .get()
 
     snapshot.forEach((doc) =>{
