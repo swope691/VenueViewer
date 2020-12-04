@@ -6,6 +6,7 @@ import ScreenOne from './screens/ScreenOne.js';
 import LoginScreen from './screens/LoginScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import ScreenTwo from './screens/ScreenTwo';
+import EditScreen from './screens/EditScreen'
 import Firebase from './config/firebase';
 
 // STYLES
@@ -35,7 +36,8 @@ export const AppSwitchNavigator = createSwitchNavigator({
   LoadingScreen:LoadingScreen,
   LoginScreen:LoginScreen,
   ScreenOne:ScreenOne,
-  ScreenTwo:ScreenTwo
+  ScreenTwo:ScreenTwo,
+  EditScreen:EditScreen
 });
 
 export const AppNavigator = createAppContainer 
