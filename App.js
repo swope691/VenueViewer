@@ -1,32 +1,31 @@
 import * as React from 'react';
-import { StyleSheet , Text, View} from 'react-native';
+import { StyleSheet , Text, View, SafeAreaView} from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { Provider as PaperProvider } from 'react-native-paper';
 import ScreenOne from './screens/ScreenOne.js';
 import LoginScreen from './screens/LoginScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import ScreenTwo from './screens/ScreenTwo';
 import Firebase from './config/firebase';
 
-
-
-
-
-
 // STYLES
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'white',
   },
 });
 
 export default class App extends React.Component{
   render(){
     return(
-      <AppNavigator/>
+      <SafeAreaView style={styles.container}>
+        <PaperProvider >
+          <AppNavigator/>
+        </PaperProvider>
+      </SafeAreaView>
+
     )
   }
 }

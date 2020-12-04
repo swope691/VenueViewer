@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    style, ActivityIndicator
+    style,
+    ActivityIndicator
 } from "react-native";
 import firebase from 'firebase';
 

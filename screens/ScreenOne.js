@@ -1,11 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Button, Image, Text, ImageBackground, TextInput
+import { StyleSheet, View, Image, Text, ImageBackground, TextInput,
 } from 'react-native';
+import { Button } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
 import database from '../database';
 import {addProject, getNotes} from '../database';
 import { ListItem, Divider } from 'react-native-elements';
+import CreateNew from '../components/CreateCard';
+import Header from '../components/Header';
+import DialogForm from '../components/DialogForm';
+
 
 
 // pull in the ScreenName component from ScreenName.js
@@ -62,38 +67,45 @@ export default class ScreenOne extends React.Component {
 
   render() {
     return (
+
         <View style={styles.wrapper}>
-          <View style={styles.topscreen}>
-            {/* <Text style={{color: "#fff", fontSize: 10}}>{this.state.user.email}</Text> */}
-            <Image style={styles.image} source={require("../assets/headlinelogo.jpg")}/>
+          <Header/>
+
+          {/* <View style={styles.topscreen}>
+            <Text style={{color: "#fff", fontSize: 10}}>{this.state.user.email}</Text>
             <Button color="#fa7d00" title="Sign Out" onPress={() => firebase.auth().signOut()} />
-          </View>
+          </View> */}
+
           {/* View below the sign out and logo */}
-          <View style={styles.newproject}>
-            <ImageBackground source={require("../assets/mic.jpg")} style={styles.bgimage}>
-              <Text style={styles.text}>Add New Project</Text>
-            </ImageBackground>
-          </View>
+
 
           <View style={styles.newproject}>
-            <Text>Title: </Text>
-            <TextInput style={styles.input} placeholder="Venue Name" 
+          <View style={{ flex: 1,flexDirection: 'row', justifyContent: "space-between",}}>
+          <View style={{flex: 1}}>
+            <Text>Title:</Text>
+            <TextInput placeholder="Venue Name" 
               value={this.state.currentNote}
               onChangeText={(text) => this.setState(prevState => ({
                 currentNote: prevState.currentNote = text
               }))}
             />
-            <Button title="Create" 
-              onPress={() =>
-              addProject(
-                {
-                  venueName: this.state.currentNote
-                }
-              )
-            }/>
-            <Button title="Edit" onPress={() => this.props.navigation.navigate('ScreenTwo')}/>
-          <Text></Text>
+          </View>
+          <View style={{flex: 1}}>
+            <Button
+                onPress={() =>
+                addProject(
+                  {
+                    venueName: this.state.currentNote
+                  }
+                )
+              }>
+              Add Project
+              </Button>
+          </View>
 
+          </View>
+
+            {/* <Button title="Edit" onPress={() => this.props.navigation.navigate('ScreenTwo')}/> */}
           </View>
 
           <FlatList
@@ -128,16 +140,18 @@ export default class ScreenOne extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
   wrapper:{
-    flex: 1
+    flex: 1,
   },
   topscreen: {
-    flex: .2,
+    flex: .5,
     alignItems: 'flex-end',
     paddingRight: 30,
     justifyContent: 'center',
     backgroundColor: "black",
-    height: 50
+    height: 70,
+    marginBottom: 50,
   },
   input: {
     flex: .3,
@@ -159,14 +173,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     height: 50,
     margin: 20,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  bgimage:{
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
-    width: 300,
     alignItems: 'center',
     justifyContent: 'center'
   },

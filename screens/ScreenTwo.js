@@ -1,8 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, style, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import ScreenTwoHeader from '../components/ScreenTwoHeader'
 import ScreenName from '../components/ScreenName.js'
+import { Appbar } from 'react-native-paper';
+import ScreenOne from './ScreenOne';
+
+
 
 // const TabIcon = (props) => (
 //     <Ionicons
@@ -18,11 +22,23 @@ export default class ScreenTwo extends React.Component {
   //   tabBarIcon: TabIcon
   // };
 
+
   render() {
-    const note = this.props.navigation.getParam('note')
+    const note = this.props.navigation.getParam('note');
+    
     console.log(note);
     return (
+      
       <View style={styles.container}>
+        
+        <Appbar.Header>
+        <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
+        <Appbar.Content
+          title={note.venueName}
+          subtitle="Subtitle"
+        />
+      </Appbar.Header>
+      
         <ScreenName name={'Screen Two'} />
         <Text>{note.venueName}</Text>
       </View>
@@ -33,7 +49,5 @@ export default class ScreenTwo extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
