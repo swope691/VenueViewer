@@ -80,7 +80,8 @@ export default class ScreenOne extends React.Component {
 
 
           <View style={styles.newproject}>
-          <View style={{ flex: 1,flexDirection: 'row', justifyContent: "space-between",}}>
+          <View style={{ flex: 1,flexDirection: 'row', justifyContent: "space-between", 
+        height: 500}}>
           <View style={{flex: 1}}>
             <Text>Title:</Text>
             <TextInput placeholder="Venue Name" 

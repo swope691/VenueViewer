@@ -10,8 +10,9 @@ const Header = () => {
   const _handleMore = () => console.log('Shown more');
 
   return (
-    <Appbar.Header statusBarHeight={40} dark={true} style={styles.container} >
+    <Appbar.Header dark={true} style={styles.container} >
       <Appbar.Content title="Headline Productions" subtitle="Home" />
+      <Appbar.Action icon="logout" onPress={() => firebase.auth().signOut()} />
     </Appbar.Header>
   );
 };
