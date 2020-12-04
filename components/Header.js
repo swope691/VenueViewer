@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Appbar } from 'react-native-paper';
 import styles from 'react-native';
+import firebase from 'firebase';
 
 const Header = () => {
   const _goBack = () => console.log('Went back');
