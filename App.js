@@ -6,7 +6,7 @@ import ScreenOne from './screens/ScreenOne.js';
 import LoginScreen from './screens/LoginScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import ScreenTwo from './screens/ScreenTwo';
-import EditScreen from './screens/EditScreen'
+import EditScreen from './screens/EditScreen';
 import Firebase from './config/firebase';
 
 // STYLES
