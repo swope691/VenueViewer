@@ -10,7 +10,6 @@ export default class ScreenTwo extends React.Component {
     return (
       
       <View style={styles.container}>
-        
         <Appbar.Header>
           <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
           <Appbar.Content style={styles.title} title={note.venueName}/>

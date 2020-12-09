@@ -102,7 +102,7 @@ export default class ScreenOne extends React.Component {
 
           <View style={{flex: 1}}>
             <FlatList
-            style={{}}
+            // style={{}} Add Styling here for FlatList
             data={this.state.notesList}
             ItemSeparatorComponent={() => <Divider style={{ backgroundColor: 'black' }} />}
             keyExtractor={(item, index) => index.toString()}
@@ -125,7 +125,6 @@ export default class ScreenOne extends React.Component {
             }
           />
           </View>
-
         </View>
 
 
