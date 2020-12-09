@@ -6,10 +6,11 @@ import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
 import database from '../database';
 import {addProject, getNotes} from '../database';
-import { ListItem, Divider } from 'react-native-elements';
+import { Divider } from 'react-native-elements';
 import CreateNew from '../components/CreateCard';
 import Header from '../components/Header';
 import DialogForm from '../components/DialogForm';
+import { Appbar } from 'react-native-paper';
 
 
 
@@ -41,8 +42,25 @@ export default class ScreenOne extends React.Component {
     this.setState(prevState => ({
       notesList: prevState.notesList = notesList
     }));
-    console.log(notesList);
     
+  }
+
+  onNoteAdded = (note) => {
+    this.setState(prevState => ({
+      notesList: [...prevState.notesList, note]
+    }));
+    this.props.navigation.popToTop();
+  }
+
+  onNoteDeleted = () => {
+    var  newNoteList = [...this.state.notesList];
+    newNoteList.splice(this.state.currentIndex, 1);
+
+    this.setState(prevState => ({
+      notesList: prevState.notesList = newNoteList
+    }));
+
+    this.props.navigation.popToTop();
   }
 
  
@@ -71,9 +89,9 @@ export default class ScreenOne extends React.Component {
 
         <View style={styles.wrapper}>
           <Header/>
-          <View style={styles.newproject}>
-          <View style={{ flex: 1,flexDirection: 'row', justifyContent: "space-between"}}>
-          <View style={{flex: 1}}>
+          {/* <View style={styles.newproject}>
+          <View style={{ flex: 1,flexDirection: 'row', justifyContent: "space-between"}}> */}
+          {/* <View style={{flex: 1}}>
             <Text>Title:</Text>
             <TextInput placeholder="Venue Name" 
               value={this.state.currentNote}
@@ -88,17 +106,13 @@ export default class ScreenOne extends React.Component {
                 addProject(
                   {
                     venueName: this.state.currentNote
-                  }
+                  },
+                  this.onNoteAdded()
                 )
               }>
               Add Project
               </Button>
-          </View>
-
-          </View>
-
-            {/* <Button title="Edit" onPress={() => this.props.navigation.navigate('ScreenTwo')}/> */}
-          </View>
+          </View> */}
 
           <View style={{flex: 1}}>
             <FlatList
@@ -108,14 +122,11 @@ export default class ScreenOne extends React.Component {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => {
               return (
-                <ListItem
-                  containerStyle={styles.listItem}
+                <List.Item
                   title={item.venueName}
-                  
-                
                   onPress={() => {
                     this.setState(prevState => ({ currentIndex: prevState.currentIndex = index }))
-                    this.props.navigation.navigate('ScreenTwo', { note: item })
+                    this.props.navigation.navigate('ScreenTwo', { note: item, noteDeletedCallback: this.onNoteDeleted })
                   }
                   }
 
@@ -124,6 +135,9 @@ export default class ScreenOne extends React.Component {
             }
             }
           />
+          </View>
+          <View>
+            <Appbar.Action icon="plus" onPress={() => {this.props.navigation.navigate('EditScreen', this.onNoteAdded)}} />
           </View>
         </View>
 

@@ -3,48 +3,64 @@ import { Appbar, TextInput} from 'react-native-paper';
 import NewSwitch from '../components/Switch'
 import { View, StyleSheet, style, Text, CheckBox } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import NoteForm from '../components/NoteForm'
 
 export default class EditScreen extends React.Component {
 
-    render() {
+  // static navigationOptions = ({navigation}) =>{
+  //   return{
+  //     title: navigation.getParam('note') ? 'Edit Note' : 'New Note'
+  //   }
+  // };
+  state ={
+    note: {
+      venueName: null
+    }
+  }
+
+  setVenueName = (text) => {
+    this.setState(prevState => ({
+      venueName: prevState.venueName = text
+    }))
+  }
+
+  componentDidMount(){
+    // const currentNote = this.props.navigation.getParam('note');
+
+    // if(currentNote){
+    //   this.setState(prevState => ({
+    //     note: prevState.note = currentNote
+    //   }))
+    // }
+  }
+
+  onNoteUpdated = (note) =>{
+    console.log(note);
+    this.props.navigation.popToTop();
+  }
+
+  
+
+
+  render() {
     
-    const note = this.props.navigation.getParam('note');
+    // const note = this.props.navigation.getParam('note');
     return (
       
       <View style={{flex: 1}}>
         <Appbar.Header>
         <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
-        <Appbar.Content title={note.venueName}/>
+        <Appbar.Content title="New Project"/>
         </Appbar.Header>
         <View style={styles.content}>
 
-          <FlatList
-            data={[
-              {
-                label: 'management'
-              },
-              {
-                label: 'venue info'
-              },
-              {
-                label: 'stage power'
-              },
-              {
-                label: 'house lights'
-              },
-              {
-                label: 'stage lights'
-              },
-              {
-                label: 'new lights'
-              },
-              {
-                label: 'mics'
-              }
-            ]}
-            renderItem={({item}) => <TextInput style={styles.textInput} key={item.label} label={item.label}></TextInput>}
-          />
-        </View>
+
+        {/* <NewSwitch></NewSwitch> */}
+        <NoteForm
+        setVenueName ={this.setVenueName}
+        onNoteAdded={this.props.navigation.state.params}
+        ></NoteForm> 
+      </View>
       </View>
     );
   }

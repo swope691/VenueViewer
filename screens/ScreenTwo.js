@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, style, Text } from 'react-native';
+import { View, StyleSheet, style, Text, Alert } from 'react-native';
 import { Appbar } from 'react-native-paper';
+import { deleteNote } from '../database';
 
 export default class ScreenTwo extends React.Component {
 
   render() {
     const note = this.props.navigation.getParam('note');
+    const onNoteDeleted = this.props.navigation.getParam('noteDeletedCallback');
     
     return (
       
@@ -17,6 +19,21 @@ export default class ScreenTwo extends React.Component {
         </Appbar.Header>
         <View style={styles.content}>
           <Text style={{fontSize: 20}}>{note.venueName}</Text>
+          <Appbar.Action 
+            icon="trash-can"
+            onPress={() =>
+              Alert.alert(
+                'Delete?',
+                'Cannot be undone',
+                [
+                  { text: 'Cancel'},
+                  { text: 'OK', onPress: () => { deleteNote(note, onNoteDeleted)}}
+                ],
+                {cancelable: false },
+              )  
+            }
+
+          />
         </View>
       </View>
     );

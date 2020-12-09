@@ -9,8 +9,9 @@ export const dbh = firebase.firestore();
 
 export async function getNotes(notesRetreived){
     var notesList = [];
+
     var snapshot = await dbh.collection('notes')
-    .orderBy('createdAt', 'desc')
+    .orderBy('createdAt')
     .get()
 
     snapshot.forEach((doc) =>{
@@ -22,45 +23,49 @@ export async function getNotes(notesRetreived){
     notesRetreived(notesList);
 }
 
+export function uploadNote(note, onNoteUploaded, { updating }) {
+  
+    if (updating) {
+        console.log("Updating....");
+        updateNote(food, onNoteUploaded);
+    } else {
+        console.log("adding...");
+        addProject(note, onNoteUploaded);
+      }
+    }
+
+export function updateNote(note, updateComplete) {
+    note.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+    console.log("Updating note in firebase");
+  
+    firebase.firestore()
+      .collection('notes')
+      .doc(note.id).set(note)
+      .then(() => updateComplete(note))
+      .catch((error) => console.log(error));
+  }
+  
+
+export function deleteNote(note, deleteComplete) {
+    console.log(note);
+  
+    firebase.firestore()
+      .collection('notes')
+      .doc(note.id).delete()
+      .then(() => deleteComplete())
+      .catch((error) => console.log(error));
+  }
+
 
 export function addProject(note, addComplete){
     note.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-    
-    dbh.collection('notes').add({
-        venueName: note.venueName,
-        address: "",
-        management: {
-            manager1: {
-                name: "",
-                email: "",
-            },
-            manager2: {
-                name: "",
-                email: "",
-            },
-            manager3: {
-                name: "",
-                email: "",
-            },
-            manager4: {
-                name: "",
-                email: "",
-            },
-            manager5: {
-                name: "",
-                email: "",
-            } 
-        },
-        venueInfo: ""
-        
-
-    }).then((snapshot) => {
-        note.id = snapshot.id;
-        snapshot.set(note);
-
+    dbh.collection('notes')
+    .add(note)
+    .then((snapshot) => {
+      note.id = snapshot.id;
+      snapshot.set(note);
     }).then(() => addComplete(note))
     .catch((error) => console.log(error));
-        
 }
 
 
