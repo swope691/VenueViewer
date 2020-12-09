@@ -9,34 +9,34 @@ export default class EditScreen extends React.Component {
 
   // static navigationOptions = ({navigation}) =>{
   //   return{
-  //     title: navigation.getParam('note') ? 'Edit Note' : 'New Note'
+  //     title: navigation.getParam('note') ? 'Edit Note' : 'New Project'
   //   }
   // };
   state ={
     note: {
-      venueName: null
-    }
+      venueName: ''
+    },
+
   }
 
-  setVenueName = (text) => {
-    this.setState(prevState => ({
-      venueName: prevState.venueName = text
-    }))
-  }
+  
+
+
 
   componentDidMount(){
-    // const currentNote = this.props.navigation.getParam('note');
-
-    // if(currentNote){
-    //   this.setState(prevState => ({
-    //     note: prevState.note = currentNote
-    //   }))
-    // }
+    const currentNote = this.props.navigation.getParam('note');
+    console.log(currentNote);
+    if(currentNote){
+      this.setState(prevState => ({
+        note: prevState.note = currentNote
+      }))
+    }
   }
 
   onNoteUpdated = (note) =>{
     console.log(note);
-    this.props.navigation.popToTop();
+    this.props.navigation.pop();
+    this.props.navigation.navigate('ScreenOne');
   }
 
   
@@ -44,21 +44,22 @@ export default class EditScreen extends React.Component {
 
   render() {
     
-    // const note = this.props.navigation.getParam('note');
+    const title = this.props.navigation.getParam('note') ? 'Edit Note' : 'New Note';
     return (
       
       <View style={{flex: 1}}>
         <Appbar.Header>
         <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
-        <Appbar.Content title="New Project"/>
+        <Appbar.Content title={title}/>
         </Appbar.Header>
         <View style={styles.content}>
 
 
         {/* <NewSwitch></NewSwitch> */}
         <NoteForm
-        setVenueName ={this.setVenueName}
         onNoteAdded={this.props.navigation.state.params}
+        note={this.state.note}
+        onNoteUpdated={this.onNoteUpdated}
         ></NoteForm> 
       </View>
       </View>

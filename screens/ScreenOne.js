@@ -49,7 +49,8 @@ export default class ScreenOne extends React.Component {
     this.setState(prevState => ({
       notesList: [...prevState.notesList, note]
     }));
-    this.props.navigation.popToTop();
+    this.props.navigation.pop();
+    
   }
 
   onNoteDeleted = () => {

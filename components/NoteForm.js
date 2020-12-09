@@ -4,18 +4,19 @@ import {
     View, 
     TextInput,
     Button,
-    Text
+    Text, FlatList
 } from 'react-native';
 import {withFormik} from 'formik';
 import * as yup from 'yup';
-import {addProject} from '../database';
+import {addProject, updateNote} from '../database';
 
 const NoteForm = (props) => {
-    console.log(props);
+    // console.log(props);
     return(
         <View>
             <View>
-                <TextInput 
+                <TextInput
+                value={props.values.venueName} 
                 label = "Venue Name"
                 onChangeText={text => { props.setFieldValue('venueName', text)}}
                 ></TextInput>
@@ -23,8 +24,9 @@ const NoteForm = (props) => {
                 <Button 
                 title = 'Submit'
                 onPress={() => props.handleSubmit()}
-                >
-                          {/* <FlatList
+                ></Button>
+            {/* <View>
+            <FlatList
             data={[
               {
                 label: 'management'
@@ -52,23 +54,29 @@ const NoteForm = (props) => {
           />
         </View> */}
                 
-                </Button>
+
             </View>
         </View>
     )
 }
 
 export default withFormik({
-    mapPropsToValues: () => ({
-        venueName: '' 
+    mapPropsToValues: ({note}) => ({
+        venueName: note.venueName 
     }),
+    enableReinitialize: true,
     validationSchema: (props) => yup.object().shape({
         venueName: yup.string().max(30).required()
     }),
     handleSubmit: (values, { props }) => {
         console.log(values);
         console.log(props);
-
-        addProject(values, props.onNoteAdded)
+        if(props.note.id){
+          values.id = props.note.id;
+          values.createdAt = props.note.createdAt;
+          updateNote(values, props.onNoteUpdated)
+        }else{
+          addProject(values, props.onNoteAdded)
+        }
     }
 })(NoteForm);

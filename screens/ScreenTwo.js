@@ -15,7 +15,7 @@ export default class ScreenTwo extends React.Component {
         <Appbar.Header>
           <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
           <Appbar.Content style={styles.title} title={note.venueName}/>
-          <Appbar.Action icon="square-edit-outline" onPress={() => {this.props.navigation.navigate('EditScreen',{note:note})}} />
+          <Appbar.Action icon="square-edit-outline" onPress={() => {this.props.navigation.navigate('EditScreen',{note: note})}} />
         </Appbar.Header>
         <View style={styles.content}>
           <Text style={{fontSize: 20}}>{note.venueName}</Text>

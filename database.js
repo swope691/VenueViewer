@@ -40,7 +40,8 @@ export function updateNote(note, updateComplete) {
   
     firebase.firestore()
       .collection('notes')
-      .doc(note.id).set(note)
+      .doc(note.id)
+      .set(note)
       .then(() => updateComplete(note))
       .catch((error) => console.log(error));
   }
