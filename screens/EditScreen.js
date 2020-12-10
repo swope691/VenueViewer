@@ -3,7 +3,7 @@ import { Appbar, TextInput} from 'react-native-paper';
 import NewSwitch from '../components/Switch'
 import { View, StyleSheet, style, Text, CheckBox } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import NoteForm from '../components/NoteForm'
+import NoteForm from '../components/NoteForm';
 
 export default class EditScreen extends React.Component {
 
@@ -14,7 +14,14 @@ export default class EditScreen extends React.Component {
   // };
   state ={
     note: {
-      venueName: ''
+      venueName: '',
+      management: '',
+      venueInfo: '',
+      stagePower: '',
+      houseLights: '',
+      stageLights:'',
+      mics: '',
+      dementions: ''
     },
 
   }
@@ -35,7 +42,7 @@ export default class EditScreen extends React.Component {
 
   onNoteUpdated = (note) =>{
     console.log(note);
-    this.props.navigation.pop();
+    // this.props.navigation.pop();
     this.props.navigation.navigate('ScreenOne');
   }
 
@@ -48,21 +55,22 @@ export default class EditScreen extends React.Component {
     return (
       
       <View style={{flex: 1}}>
-        <Appbar.Header>
-        <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
-        <Appbar.Content title={title}/>
-        </Appbar.Header>
+          <Appbar.Header>
+          <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
+          <Appbar.Content title={title}/>
+          {/* <Appbar.Action icon="content-save-outline" onPress={() => props.handleSubmit()} /> */}
+          </Appbar.Header>
+
+
         <View style={styles.content}>
-
-
         {/* <NewSwitch></NewSwitch> */}
-        <NoteForm
-        onNoteAdded={this.props.navigation.state.params}
-        note={this.state.note}
-        onNoteUpdated={this.onNoteUpdated}
-        ></NoteForm> 
-      </View>
-      </View>
+          <NoteForm
+          onNoteAdded={this.props.navigation.state.params}
+          note={this.state.note}
+          onNoteUpdated={this.onNoteUpdated}
+          ></NoteForm> 
+        </View>
+    </View>
     );
   }
 }

@@ -8,7 +8,6 @@ import database from '../database';
 import {addProject, getNotes} from '../database';
 import { Divider } from 'react-native-elements';
 import CreateNew from '../components/CreateCard';
-import Header from '../components/Header';
 import DialogForm from '../components/DialogForm';
 import { Appbar } from 'react-native-paper';
 
@@ -50,7 +49,6 @@ export default class ScreenOne extends React.Component {
       notesList: [...prevState.notesList, note]
     }));
     this.props.navigation.pop();
-    
   }
 
   onNoteDeleted = () => {
@@ -86,10 +84,16 @@ export default class ScreenOne extends React.Component {
 
 
   render() {
+    console.log(this.state.notesList)
+
     return (
 
         <View style={styles.wrapper}>
-          <Header/>
+            <Appbar.Header dark={true} style={styles.container} >
+            <Appbar.Content title="Headline Productions" subtitle="Home" />
+            <Appbar.Action icon="plus" onPress={() => {this.props.navigation.navigate('EditScreen', this.onNoteAdded)}} />
+            <Appbar.Action icon="logout" onPress={() => firebase.auth().signOut()} />
+          </Appbar.Header>
           {/* <View style={styles.newproject}>
           <View style={{ flex: 1,flexDirection: 'row', justifyContent: "space-between"}}> */}
           {/* <View style={{flex: 1}}>
@@ -114,10 +118,8 @@ export default class ScreenOne extends React.Component {
               Add Project
               </Button>
           </View> */}
-
           <View style={{flex: 1}}>
             <FlatList
-            // style={{}} Add Styling here for FlatList
             data={this.state.notesList}
             ItemSeparatorComponent={() => <Divider style={{ backgroundColor: 'black' }} />}
             keyExtractor={(item, index) => index.toString()}
@@ -136,9 +138,6 @@ export default class ScreenOne extends React.Component {
             }
             }
           />
-          </View>
-          <View>
-            <Appbar.Action icon="plus" onPress={() => {this.props.navigation.navigate('EditScreen', this.onNoteAdded)}} />
           </View>
         </View>
 

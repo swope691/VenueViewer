@@ -2,71 +2,122 @@ import React, {Component } from 'react';
 import {
     StyleSheet,
     View, 
-    TextInput,
-    Button,
-    Text, FlatList
+    Text, FlatList, Button
 } from 'react-native';
 import {withFormik} from 'formik';
 import * as yup from 'yup';
 import {addProject, updateNote} from '../database';
+import {TextInput} from 'react-native-paper';
 
 const NoteForm = (props) => {
     // console.log(props);
     return(
         <View>
-            <View>
-                <TextInput
+
+                {/* <TextInput
+                Mode='flat'
                 value={props.values.venueName} 
                 label = "Venue Name"
                 onChangeText={text => { props.setFieldValue('venueName', text)}}
-                ></TextInput>
-                    <Text> {props.errors.venueName} </Text>
-                <Button 
-                title = 'Submit'
-                onPress={() => props.handleSubmit()}
-                ></Button>
-            {/* <View>
+                >
+                </TextInput>
+                    <Text> {props.errors.venueName} </Text> */}
+
             <FlatList
             data={[
               {
-                label: 'management'
+                value: props.values.venueName,
+                label: 'venue name',
+                change: 'venueName'
               },
               {
-                label: 'venue info'
+                value: props.values.management,
+                label: 'management',
+                change: 'management'
+
               },
               {
-                label: 'stage power'
+                value: props.values.venueInfo,
+                label: 'venue info',
+                change: 'venueInfo'
+
               },
               {
-                label: 'house lights'
+                value: props.values.stagePower,
+                label: 'stage power',
+                change: 'stagePower'
               },
               {
-                label: 'stage lights'
+                value: props.values.stageLights,
+                label: 'stage lights',
+                change: 'stageLights'
+
               },
               {
-                label: 'new lights'
+                value: props.values.mics,
+                label: 'mics',
+                change: 'mics'
               },
               {
-                label: 'mics'
+                value: props.values.dementions,
+                label: 'dementions',
+                change: 'management'
               }
             ]}
-            renderItem={({item}) => <TextInput style={styles.textInput} key={item.label} label={item.label}></TextInput>}
-          />
-        </View> */}
-                
+            renderItem={({item}) => 
+            <TextInput 
+              mode="flat" 
+              style={styles.textInput} 
+              key={item.label} 
+              label={item.label} 
+              value={item.value} 
+              onChangeText={text => { props.setFieldValue(item.change, text)}}
+            ></TextInput>}
+          /> 
+          <Button 
+                title = 'Submit'
+                onPress={() => props.handleSubmit()}
+          ></Button>           
 
-            </View>
         </View>
     )
 }
 
+// Styles
+const styles = StyleSheet.create({
+  content:{
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    margin: 20,
+  },
+  textInput:{
+    marginTop: 30
+  }
+});
+
 export default withFormik({
+
     mapPropsToValues: ({note}) => ({
-        venueName: note.venueName 
+        venueName: note.venueName,
+        management: note.management,
+        venueInfo: note.venueInfo,
+        stagePower: note.stagePower,
+        houseLights: note.houseLights,
+        stageLights: note.stageLights,
+        mics: note.mics,
+        dementions: note.dementions
     }),
     enableReinitialize: true,
     validationSchema: (props) => yup.object().shape({
-        venueName: yup.string().max(30).required()
+        venueName: yup.string().max(30).required(),
+        management: yup.string().max(100),
+        venueInfo: yup.string().max(20),
+        houseLights: yup.string().max(20),
+        stagePower: yup.string().max(20),
+        houseLights: yup.string().max(20),
+        mics: yup.string().max(20),
+        dementions: yup.string().max(20)
     }),
     handleSubmit: (values, { props }) => {
         console.log(values);
