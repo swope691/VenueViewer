@@ -61,7 +61,7 @@ const NoteForm = (props) => {
               {
                 value: props.values.dementions,
                 label: 'dementions',
-                change: 'management'
+                change: 'dementions'
               }
             ]}
             renderItem={({item}) => 
@@ -103,7 +103,6 @@ export default withFormik({
         management: note.management,
         venueInfo: note.venueInfo,
         stagePower: note.stagePower,
-        houseLights: note.houseLights,
         stageLights: note.stageLights,
         mics: note.mics,
         dementions: note.dementions
@@ -115,7 +114,6 @@ export default withFormik({
         venueInfo: yup.string().max(20),
         houseLights: yup.string().max(20),
         stagePower: yup.string().max(20),
-        houseLights: yup.string().max(20),
         mics: yup.string().max(20),
         dementions: yup.string().max(20)
     }),

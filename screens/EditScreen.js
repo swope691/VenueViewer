@@ -18,7 +18,6 @@ export default class EditScreen extends React.Component {
       management: '',
       venueInfo: '',
       stagePower: '',
-      houseLights: '',
       stageLights:'',
       mics: '',
       dementions: ''
@@ -42,8 +41,8 @@ export default class EditScreen extends React.Component {
 
   onNoteUpdated = (note) =>{
     console.log(note);
-    // this.props.navigation.pop();
-    this.props.navigation.navigate('ScreenOne');
+    this.props.navigation.pop('ScreenOne');
+
   }
 
   
