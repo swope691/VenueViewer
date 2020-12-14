@@ -15,12 +15,27 @@ export default class EditScreen extends React.Component {
   state ={
     note: {
       venueName: '',
-      management: '',
+      tourName: '',
+      venueAddress:'',
+      manager1:'',
+      manager2:'',
+      manager3:'',
+      manager4:'',
+      manager5:'',
       venueInfo: '',
+      backstageInfo: '',
+      merchInfo: '',
       stagePower: '',
-      stageLights:'',
-      mics: '',
-      dementions: ''
+      lighting:'',
+      audio: '',
+      stage: '',
+      snakeRun:'',
+      riggingInfo:'',
+      parkingInfo: '',
+      extraNote1:'',
+      extraNote2:''
+
+      
     },
 
   }
