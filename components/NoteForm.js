@@ -1,7 +1,7 @@
 import React, {Component } from 'react';
 import {
     StyleSheet,
-    View, 
+    KeyboardAvoidingView, 
     Text, FlatList, Button
 } from 'react-native';
 import {withFormik} from 'formik';
@@ -12,7 +12,7 @@ import {TextInput} from 'react-native-paper';
 const NoteForm = (props) => {
     // console.log(props);
     return(
-          <View>
+          <KeyboardAvoidingView behavior="">
               <FlatList
               data={[
                 {
@@ -129,25 +129,22 @@ const NoteForm = (props) => {
                 onChangeText={text => { props.setFieldValue(item.change, text)}}
               ></TextInput>}
             />
+            
           <Button 
                 title = 'Submit'
                 onPress={() => props.handleSubmit()}
-          ></Button>           
-        </View>
+          ></Button>
+
+        </KeyboardAvoidingView>
         
     )
 }
 
 // Styles
 const styles = StyleSheet.create({
-  content:{
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    margin: 20,
-  },
+
   textInput:{
-    marginTop: 30
+    marginBottom: 30
   }
 });
 

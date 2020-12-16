@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, style, Text, Alert } from 'react-native';
+import { View, StyleSheet, style, Text, Alert, ScrollView } from 'react-native';
 import { Appbar } from 'react-native-paper';
 import { deleteNote } from '../database';
 import * as Print from 'expo-print';
@@ -80,10 +80,30 @@ export default class ScreenTwo extends React.Component {
           />
           <Appbar.Action icon="share-variant" onPress={() => execute()} />
         </Appbar.Header>
+        <ScrollView>
+
         <View style={styles.content}>
-          <Text style={{fontSize: 20}}>{note.venueName}</Text>
-          <Text style={{fontSize: 20}}>{note.management}</Text>
+
+          <Text style={styles.textStyle}>Venue Name: {note.venueName}</Text>
+          <Text style={styles.textStyle}>Venue Info: {note.venueInfo}</Text>
+          <Text style={styles.textStyle}>Venue Address: {note.venueAddress}</Text>
+          <Text style={styles.textStyle}>Tour Name: {note.tourName}</Text>
+          <Text style={styles.textStyle}>Stage Power: {note.stagePower}</Text>
+          <Text style={styles.textStyle}>Stage: {note.stage}</Text>
+          <Text style={styles.textStyle}>Snake Run: {note.snakeRun}</Text>
+          <Text style={styles.textStyle}>Rigging Info: {note.riggingInfo}</Text>
+          <Text style={styles.textStyle}>Parking Info: {note.parkingInfo}</Text>
+          <Text style={styles.textStyle}>Merch Info: {note.merchInfo}</Text>
+          <Text style={styles.textStyle}>Managers: {note.manager1}, {note.manager2}, {note.manager3}, {note.manager4}, {note.manager5}</Text>
+          <Text style={styles.textStyle}>Lighting: {note.lighting}</Text>
+          <Text style={styles.textStyle}>Audio: {note.audio}</Text>
+          <Text style={styles.textStyle}>Backstage Info: {note.backstageInfo}</Text>
+          <Text style={styles.textStyle}>Extra Note 1: {note.extraNote1}</Text>
+          <Text style={styles.textStyle}>Extra Note 2: {note.extraNote2}</Text>  
+
         </View>
+        </ScrollView>
+
       </View>
     );
   }
@@ -94,11 +114,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content:{
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     margin: 20,
   },
   title:{
     fontSize: 30,
+  },
+  textStyle:{
+    fontSize: 20,
+    lineHeight: 40,
   }
 });

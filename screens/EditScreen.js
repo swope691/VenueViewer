@@ -4,14 +4,10 @@ import NewSwitch from '../components/Switch'
 import { View, StyleSheet, style, Text, CheckBox } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import NoteForm from '../components/NoteForm';
+import {handleSubmit} from '../components/NoteForm'
 
 export default class EditScreen extends React.Component {
 
-  // static navigationOptions = ({navigation}) =>{
-  //   return{
-  //     title: navigation.getParam('note') ? 'Edit Note' : 'New Project'
-  //   }
-  // };
   state ={
     note: {
       venueName: '',
@@ -34,15 +30,9 @@ export default class EditScreen extends React.Component {
       parkingInfo: '',
       extraNote1:'',
       extraNote2:''
-
-      
     },
 
   }
-
-  
-
-
 
   componentDidMount(){
     const currentNote = this.props.navigation.getParam('note');
@@ -56,12 +46,9 @@ export default class EditScreen extends React.Component {
 
   onNoteUpdated = (note) =>{
     console.log(note);
-    this.props.navigation.pop('ScreenOne');
+    navigation.navigate('ScreenOne');
 
   }
-
-  
-
 
   render() {
     
@@ -72,7 +59,7 @@ export default class EditScreen extends React.Component {
           <Appbar.Header>
           <Appbar.BackAction onPress={() => {this.props.navigation.navigate('ScreenOne')}} />
           <Appbar.Content title={title}/>
-          {/* <Appbar.Action icon="content-save-outline" onPress={() => props.handleSubmit()} /> */}
+          {/* <Appbar.Action icon="content-save-outline" onPress={()=> handleSubmit } /> */}
           </Appbar.Header>
 
 

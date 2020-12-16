@@ -12,7 +12,6 @@ import DialogForm from '../components/DialogForm';
 import { Appbar } from 'react-native-paper';
 
 
-
 // pull in the ScreenName component from ScreenName.js
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -59,7 +58,7 @@ export default class ScreenOne extends React.Component {
       notesList: prevState.notesList = newNoteList
     }));
 
-    this.props.navigation.popToTop();
+    // this.props.navigation.popToTop();
   }
 
  
