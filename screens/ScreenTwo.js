@@ -47,7 +47,6 @@ export default class ScreenTwo extends React.Component {
           <p style = "font-size: 14px"> ${note.extraNote1}</p>\n
           <p style = "font-size: 14px"> ${note.extraNote2}</p>
   
-        <h1 style = "page-break-before: always; text-align: center; font-size: 26px"> Add Photos: </h1>\n\n
   
         </body> `;
         const { uri } = await Print.printToFileAsync({ html });
